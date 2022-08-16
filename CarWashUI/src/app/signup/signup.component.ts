@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
@@ -18,23 +18,30 @@ export class SignupComponent implements OnInit {
 
   constructor(private route:Router, private formBuilder : FormBuilder, private service:SignupService) { }
 
-  ngOnInit(): void {
-    this.signupForm = this.formBuilder.group({
-      userName :  ['',Validators.required],
-      userAddress :['',Validators.required],
-      userPhnumber : ['',Validators.required],
-      userEmail : ['',Validators.required],
-      userPassword : ['',Validators.required],
-      userStatus : ['Active',Validators.required],
-      role : ['Customer',Validators.required]
+  ngOnInit(): any {}
+
+  signupform= new FormGroup({
+      userName : new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z]+$")]),
+      userAddress :new FormControl('',[Validators.required, Validators.pattern("^[a-zA-Z0-9_.-]*$")]),
+      userPhnumber : new FormControl('',[Validators.required, Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]),
+      userEmail: new FormControl('',[Validators.required, Validators.email]),
+      userPassword : new FormControl('',[Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$")]),
+      userStatus : new FormControl('Active',[Validators.required]),
+      role : new FormControl('Customer',[Validators.required])
     })
-  }
+
+
+    get f(){
+   
+      return this.signupform.controls;
+    }
 
 
   signUp()
   {
-    if(this.signupForm.valid){
-      this.service.proceedSignup(this.signupForm.value).subscribe(result=>{
+    console.log(this.signupform.value)
+    if(this.signupform.valid){
+      this.service.proceedSignup(this.signupform.value).subscribe(result=>{
         if(result!=null)
         {
           alert("Registration Successful");

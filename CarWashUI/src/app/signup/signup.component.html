@@ -1,7 +1,4 @@
 <div class="content">
-
-
-    
     <h2 mat-dialog-title>Signup</h2>
 <div mat-dialog-content>
 
@@ -10,36 +7,104 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input formControlName="userName" matInput placeholder="Enter Your Name">
+      <input [formControl]="f.userName" matInput  placeholder="Enter Your Name">
+
+      <mat-error *ngIf="f.userName.hasError('pattern') && !signupform.hasError('required')">
+        Please enter a valid Name
+      </mat-error>
+
+      <mat-error *ngIf="signupform.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+
     </mat-form-field>
 
+
+
+
+
     <mat-form-field appearance="outline">
+
+
       <mat-label>Address</mat-label>
-      <input formControlName="userAddress" matInput placeholder="Enter Your Address">
+      <input [formControl]="f.userAddress" matInput placeholder="Enter Your Address">
+
+      <mat-error *ngIf="f.userAddress.hasError('pattern') && !signupform.hasError('required')">
+        Please enter a valid Address
+      </mat-error>
+
+      <mat-error *ngIf="signupform.hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+
+
     </mat-form-field>
+
+
+
+
+
 
     <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Telephone</mat-label>
+      <mat-label>Mobile</mat-label>
       <span matPrefix>+91 &nbsp;</span>
-      <input formControlName="userPhnumber" type="tel" matInput placeholder="555-555-1234">
+      <input [formControl]="f.userPhnumber" type="tel" matInput placeholder="555-555-1234">
+    
+      <mat-error *ngIf="f.userPhnumber.hasError('pattern') && !signupform.hasError('required')">
+        Please enter a valid Mobile Number
+      </mat-error>
+
+      <mat-error *ngIf="signupform.hasError('required')">
+        Mobile Number is <strong>required</strong>
+      </mat-error>
+    
+    
+    
     </mat-form-field>
 
 
 
 
-    <mat-form-field appearance="outline">
+    <mat-form-field class="example-full-width" appearance="outline">
+
+
       <mat-label>Email</mat-label>
-      <input  formControlName="userEmail" matInput placeholder="Enter Your Email Id">
+      <input  [formControl]="f.userEmail" matInput placeholder="Enter Your Email Id">
+
+      <mat-error *ngIf="f.userEmail.hasError('email') && !signupform.hasError('required')">
+        Please enter a valid email 
+      </mat-error>
+
+      <mat-error *ngIf="signupform.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    
+    
+    
     </mat-form-field>
 
 
 
     <mat-form-field appearance="outline">
       <mat-label>Enter your password</mat-label>
-      <input formControlName="userPassword" matInput [type]="hide ? 'password' : 'text'">
+      <input [formControl]="f.userPassword" matInput [type]="hide ? 'password' : 'text'">
+
+      <mat-error *ngIf="f.userPassword.hasError('pattern') && !signupform.hasError('required')">
+        Please enter a valid Password 
+        Requirements: length 6-16 <br>Combination of Uppercase, Lowercase, Number and special Character
+      </mat-error>
+
+      <mat-error *ngIf="signupform.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+
+      
+
+      
     </mat-form-field>
 
 
