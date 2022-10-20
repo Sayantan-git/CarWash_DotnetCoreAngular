@@ -71,7 +71,6 @@ namespace CarWashApi.Repository
                                 {
                                     return 401;
                                 }
-
                             }
                         }
                         else

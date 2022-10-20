@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
-import { LoginService } from '../_Services/login.service';
 import { SignupService } from '../_Services/signup.service';
 @Component({
   selector: 'app-signup',
@@ -21,8 +18,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): any {}
 
   signupform= new FormGroup({
-      userName : new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z]+$")]),
-      userAddress :new FormControl('',[Validators.required, Validators.pattern("^[a-zA-Z0-9_.-]*$")]),
+      userName : new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z ]+$")]),
+      userAddress :new FormControl('',[Validators.required]),
       userPhnumber : new FormControl('',[Validators.required, Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]),
       userEmail: new FormControl('',[Validators.required, Validators.email]),
       userPassword : new FormControl('',[Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$")]),

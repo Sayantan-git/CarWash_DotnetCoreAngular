@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,11 @@ import { Injectable } from '@angular/core';
 export class ViewWasherService {
 
   constructor(private http: HttpClient) { }
+  baseUrl = environment.baseUrl; 
+  
 
   getWashers(){
-    return this.http.get<any>("http://localhost:54459/api/ViewWasher");
+    return this.http.get<any>(this.baseUrl + "/api/ViewWasher");
   }
 
 }

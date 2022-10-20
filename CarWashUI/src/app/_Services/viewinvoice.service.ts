@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,10 @@ import { Injectable } from '@angular/core';
 export class ViewinvoiceService {
 
   constructor(private http:HttpClient) { }
+  
+  baseUrl = environment.baseUrl; 
 
-  apiurl = 'http://localhost:54459/api/ViewInvoice?email=';
+  apiurl = this.baseUrl + '/api/ViewInvoice?email=';
 
   ViewInvoice(){
 

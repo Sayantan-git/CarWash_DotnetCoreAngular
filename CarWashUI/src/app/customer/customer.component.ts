@@ -28,6 +28,8 @@ export class CustomerComponent implements OnInit {
   myAccount(){
     this.route.navigateByUrl('/myAccount');
   }
+
+  
   ViewPackages(){
     this.dialog.open(ViewpackagedialogComponent,{
       width: '70%'

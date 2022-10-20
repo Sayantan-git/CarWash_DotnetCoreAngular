@@ -23,7 +23,7 @@ namespace CarWashApi.Repository
             try
             {
                 var email = new MimeMessage();
-                email.From.Add(MailboxAddress.Parse("vtu11310@veltech.edu.in"));
+                email.From.Add(MailboxAddress.Parse("greencarwash8@gmail.com"));
                 email.To.Add(MailboxAddress.Parse("sayantanb2000@gmail.com"));
                 email.Subject = "Package Added";
                 email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -34,7 +34,7 @@ namespace CarWashApi.Repository
                 };
                 using var smtp = new MailKit.Net.Smtp.SmtpClient();
                 smtp.Connect("smtp.gmail.com", 587, false);
-                smtp.Authenticate("vtu11310@veltech.edu.in", "sayan@artpagla");
+                smtp.Authenticate("greencarwash8@gmail.com", "tompuigbpkhqujhc");
                 smtp.Send(email);
                 smtp.Disconnect(true);
                 return package;

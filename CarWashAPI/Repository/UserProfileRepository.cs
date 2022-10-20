@@ -11,7 +11,7 @@ namespace CarWashApi.Repository
     public class UserProfileRepository : IRepository<UserProfile, int>  
     {
         CarWashContext _context;
-        public UserProfileRepository(CarWashContext context) => _context = context;  ///Constructor Injection
+        public UserProfileRepository(CarWashContext context) => _context = context;  
 
 
         #region CreateUser

@@ -20,8 +20,8 @@ export class AddWasherComponent implements OnInit {
   ngOnInit(): any { }
 
   signupform = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z]+$")]),
-    userAddress: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9_.-]*$")]),
+    userName: new FormControl('', [Validators.required, Validators.pattern("^[A-Za-z ]+$")]),
+    userAddress: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9_.-/ ]*$")]),
     userPhnumber: new FormControl('', [Validators.required, Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]),
     userEmail: new FormControl('', [Validators.required, Validators.email]),
     userPassword: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$")]),

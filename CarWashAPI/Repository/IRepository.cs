@@ -7,6 +7,8 @@ namespace CarWashApi.Repository
 {
     public interface IRepository<TEntity, TKey> where TEntity : class
     {
+
+        //Ienumerable - enables us to loop through anonymous collections
         Task<IEnumerable<TEntity>> GetAsync();  //to get all users
         Task<TEntity> GetIdAsync(TKey id);  //get user by id
         Task<int> CreateAsync(TEntity item);  //to create user
